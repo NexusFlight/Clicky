@@ -65,9 +65,11 @@ namespace clicky
             {
                 if(latch)
                 {
-                    points.TryGetValue(Key.Z, out System.Drawing.Point mainClick);
-                    System.Windows.Forms.Cursor.Position = mainClick;
-                    mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)mainClick.X, (uint)mainClick.Y, 0, 0);
+                    if (points.ContainsKey(Key.Z)) {
+                        points.TryGetValue(Key.Z, out System.Drawing.Point mainClick);
+                        System.Windows.Forms.Cursor.Position = mainClick;
+                        mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, (uint)mainClick.X, (uint)mainClick.Y, 0, 0);
+                    }
                 }
                 if (Keyboard.IsKeyDown(Key.X) && !keylatch)
                 {
